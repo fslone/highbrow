@@ -2,7 +2,6 @@
 #
 # @author Fleming Slone
 # @since 6/29/2015
-# todo: add document object methods
 
 ((root, factory) ->
 	root.highbrow = factory(root.highbrow)
@@ -15,6 +14,8 @@
 		uA: window.navigator.userAgent.toLowerCase()
 		do: 
 			alert: (msg) -> w.alert(msg)
+			addEventListener: (e,fnc) -> w.document.addEventListener(e,fnc)
+			adoptNode: (node) -> w.document.adoptNode(node)
 			assign: -> w.location.assign()
 			atob: (str) -> w.atob(str)
 			back: -> w.history.back()
@@ -24,15 +25,30 @@
 			clearTimeout: -> w.clearTimeout()
 			close: -> w.close()
 			confirm: (msg) -> w.confirm(msg)
+			createAttribute: (i) -> w.document.createAttribute(i)
 			createPopup: -> w.createPopup()
+			createComment: (str) -> w.document.createComment(str)
+			createDocumentFragment: (i) -> w.document.createDocumentFragment(i)
+			createElement: (el) -> w.document.createElement(el)
+			createTextNode: (str) -> w.document.createTextNode(str)
 			focus: -> w.focus()
 			forward: -> w.history.forward()
+			getElementById: (str) -> w.document.getElementById
+			getElementsByClassName: (str) -> w.document.getElementsByClassName(str)
+			getElementsByName: (str) -> w.document.getElementsByName(str)
+			getElementsByTagName: (str) -> w.document.getElementsByTagName(str)
 			go: (loc) -> w.history.go(loc)
 			moveBy: (i) -> w.moveBy(i)
 			moveTo: (i) -> w.moveTo(i)
+			normalize: -> w.document.normalize
+			normalizeDocument: -> w.document.normalizeDocument
 			open: -> w.open()
 			print: -> w.print()
 			prompt: (msg,def) -> w.prompt(msg, def)
+			querySelector: (str) -> w.document.querySelector(str)
+			querySelectorAll: (str) -> w.document.querySelectorAll(str)
+			removeEventListener: (str) -> w.document.removeEventListener(str)
+			renameNode: (str) -> w.document.renameNode(str)
 			resizeBy: (i) -> w.resizeBy(i)
 			resizeTo: -> w.resizeTo(i)
 			reload: -> w.location.reload()
@@ -40,6 +56,8 @@
 			scrollTo: (x,y) -> w.scrollTo(x,y)
 			setInterval: (fnc,m) -> w.setInterval(fnc,m)
 			stop: -> w.stop()
+			write: (str) -> w.document.write(str)
+			writeIn: (str) -> w.document.writeIn(str)
 		is:
 			android: -> /android/i.test(highbrow.uA)
 			blackberry: -> /blackberry/i.test(highbrow.uA) || /BB10/i.test(highbrow.uA)
@@ -143,6 +161,7 @@
 			frames: -> w.frames
 			geolocation: -> w.navigator.geolocation
 			hash: -> w.location.hash
+			hasFocus: -> w.document.hasfocus()
 			head: -> w.document.head
 			#this height is taken from jQuery.height
 			height: -> Math.max document.documentElement['clientHeight'], document.body['scrollHeight'], document.documentElement['scrollHeight'], document.body['offsetHeight'], document.documentElement['offsetHeight']

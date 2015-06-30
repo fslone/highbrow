@@ -12,6 +12,12 @@
       alert: function(msg) {
         return w.alert(msg);
       },
+      addEventListener: function(e, fnc) {
+        return w.document.addEventListener(e, fnc);
+      },
+      adoptNode: function(node) {
+        return w.document.adoptNode(node);
+      },
       assign: function() {
         return w.location.assign();
       },
@@ -39,14 +45,41 @@
       confirm: function(msg) {
         return w.confirm(msg);
       },
+      createAttribute: function(i) {
+        return w.document.createAttribute(i);
+      },
       createPopup: function() {
         return w.createPopup();
+      },
+      createComment: function(str) {
+        return w.document.createComment(str);
+      },
+      createDocumentFragment: function(i) {
+        return w.document.createDocumentFragment(i);
+      },
+      createElement: function(el) {
+        return w.document.createElement(el);
+      },
+      createTextNode: function(str) {
+        return w.document.createTextNode(str);
       },
       focus: function() {
         return w.focus();
       },
       forward: function() {
         return w.history.forward();
+      },
+      getElementById: function(str) {
+        return w.document.getElementById;
+      },
+      getElementsByClassName: function(str) {
+        return w.document.getElementsByClassName(str);
+      },
+      getElementsByName: function(str) {
+        return w.document.getElementsByName(str);
+      },
+      getElementsByTagName: function(str) {
+        return w.document.getElementsByTagName(str);
       },
       go: function(loc) {
         return w.history.go(loc);
@@ -57,6 +90,12 @@
       moveTo: function(i) {
         return w.moveTo(i);
       },
+      normalize: function() {
+        return w.document.normalize;
+      },
+      normalizeDocument: function() {
+        return w.document.normalizeDocument;
+      },
       open: function() {
         return w.open();
       },
@@ -65,6 +104,18 @@
       },
       prompt: function(msg, def) {
         return w.prompt(msg, def);
+      },
+      querySelector: function(str) {
+        return w.document.querySelector(str);
+      },
+      querySelectorAll: function(str) {
+        return w.document.querySelectorAll(str);
+      },
+      removeEventListener: function(str) {
+        return w.document.removeEventListener(str);
+      },
+      renameNode: function(str) {
+        return w.document.renameNode(str);
       },
       resizeBy: function(i) {
         return w.resizeBy(i);
@@ -86,6 +137,12 @@
       },
       stop: function() {
         return w.stop();
+      },
+      write: function(str) {
+        return w.document.write(str);
+      },
+      writeIn: function(str) {
+        return w.document.writeIn(str);
       }
     },
     is: {
@@ -282,6 +339,9 @@
       },
       hash: function() {
         return w.location.hash;
+      },
+      hasFocus: function() {
+        return w.document.hasfocus();
       },
       head: function() {
         return w.document.head;
