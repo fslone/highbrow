@@ -8,24 +8,37 @@
 )(@,
 	->(highbrow)
 	root = @ || global
+	w = window
 	highbrow = {} 
 	highbrow =
 		uA: window.navigator.userAgent.toLowerCase()
 		do: 
-			alert: (msg) -> window.alert(msg)
-			assign: -> window.location.assign()
-			atob: (str) -> window.atob(str)
-			back: -> window.history.back()
-			blur: -> window.blur()
-			btoa: (str) -> window.btoa(str)
-			close: -> window.close()
-			confirm: (msg) -> window.confirm(msg)
-			forward: -> window.history.forward()
-			go: (loc) -> window.history.go(loc)
-			prompt: (msg, def) -> window.prompt(msg, def)
-			reload: -> window.location.reload()
-			replace: -> window.location.replace()
-			stop: -> window.stop()
+			alert: (msg) -> w.alert(msg)
+			assign: -> w.location.assign()
+			atob: (str) -> w.atob(str)
+			back: -> w.history.back()
+			blur: -> w.blur()
+			btoa: (str) -> w.btoa(str)
+			clearInterval: -> w.clearInterval()
+			clearTimeout: -> w.clearTimeout()
+			close: -> w.close()
+			confirm: (msg) -> w.confirm(msg)
+			createPopup: -> w.createPopup()
+			focus: -> w.focus()
+			forward: -> w.history.forward()
+			go: (loc) -> w.history.go(loc)
+			moveBy: (i) -> w.moveBy(i)
+			moveTo: (i) -> w.moveTo(i)
+			open: -> w.open()
+			print: -> w.print()
+			prompt: (msg,def) -> w.prompt(msg, def)
+			resizeBy: (i) -> w.resizeBy(i)
+			resizeTo: -> w.resizeTo(i)
+			reload: -> w.location.reload()
+			replace: -> w.location.replace()
+			scrollTo: (x,y) -> w.scrollTo(x,y)
+			setInterval: (fnc,m) -> w.setInterval(fnc,m)
+			stop: -> w.stop()
 		is:
 			android: -> /android/i.test(highbrow.uA)
 			blackberry: -> /blackberry/i.test(highbrow.uA) || /BB10/i.test(highbrow.uA)
@@ -40,8 +53,7 @@
 					else 
 						false
 				else
-					window.chrome?
-			closed: -> window.closed
+					w.chrome?
 			firefox: (v) -> 
 				if v?
 					if highbrow.is.firefox() is true
@@ -54,8 +66,8 @@
 				else
 						/firefox/i.test(highbrow.uA)
 			opera: -> highbrow.get.userAgentDowncase().indexOf('presto') is not -1
-			ie: (v) -> !v? /msie/i.test(highbrow.uA) || 'ActiveXObject' in window
-			online: -> window.navigator.onLine
+			ie: (v) -> !v? /msie/i.test(highbrow.uA) || 'ActiveXObject' in w
+			online: -> w.navigator.onLine
 			ipad: -> /ipad/i.test(highbrow.uA)
 			iphone: (v) ->
 				if v?
@@ -102,36 +114,87 @@
 			windows: -> /win/i.test(highbrow.get.appVersion)
 			windowsPhone: -> @.windows() and /phone/i.test(highbrow.uA)
 		get:
-			# cookie:
-			appName: -> window.navigator.appName
-			appVersion: -> window.navigator.appVersion
-			hash: -> window.location.hash
+			activeElement: -> w.document.activeElement
+			anchors: -> w.document.anchors
+			applets: -> w.document.applets
+			appName: -> w.navigator.appName
+			appVersion: -> w.navigator.appVersion
+			baseURI: -> w.document.baseURI
+			body: -> w.document.body
+			closed: -> w.closed
+			cookie: -> w.document.cookie
+			defaultState: -> w.defaultStatus
+			doctype: -> w.document.doctype
+			#obj
+			document: -> w.document
+			documentElement: -> w.documentElement
+			documentMode: -> w.documentMode
+			documentURI: -> w.documentURI
+			domain: -> w.document.domain
+			embeds: -> w.document.embeds
+			forms: -> w.document.forms
+			frameElement: -> w.frameElement
+			frames: -> w.frames
+			hash: -> w.location.hash
+			head: -> w.document.head
+			#this height is taken from jQuery.height
 			height: -> Math.max document.documentElement['clientHeight'], document.body['scrollHeight'], document.documentElement['scrollHeight'], document.body['offsetHeight'], document.documentElement['offsetHeight']
-			host: -> window.location.host
-			hostname: -> window.location.hostname
-			href: -> window.location.href
-			innerHeight: -> window.innerHeight
-			innerWidth: -> window.innerWidth
-			language: -> window.navigator.language
-			geolocation: -> window.navigator.geolocation
-			maxTouchPoints: -> -> window.navigator.maxTouchPoints
-			name: -> window.name
-			opener: -> window.opener
-			origin: -> window.location.origin
-			pathname: -> window.location.pathname
-			platform: -> window.navigator.platform
-			port: -> window.location.port
-			product: -> window.navigator.product
-			productSub: -> window.navigator.productSub
-			protocol: -> window.location.protocol
+			#obj
+			history: -> w.history
+			host: -> w.location.host
+			hostname: -> w.location.hostname
+			href: -> w.location.href
+			images: -> w.document.images
+			implementation: -> w.document.implementation
+			innerHeight: -> w.innerHeight
+			innerWidth: -> w.innerWidth
+			inputEncoding: -> w.document.inputEncoding
+			language: -> w.navigator.language
+			lastModified: -> w.navigator.lastModified
+			length: -> w.length
+			linkes: -> w.links
+			#obj
+			location: -> w.location
+			geolocation: -> w.navigator.geolocation
+			maxTouchPoints: -> -> w.navigator.maxTouchPoints
+			name: -> w.name
+			#obj
+			navigator: -> w.navigator
+			opener: -> w.opener
+			origin: -> w.location.origin
+			outerHeight: -> w.outerHeight
+			outerWidth: -> w.outerWidth
+			pageXOffset: -> w.pageXOffset
+			pageYOffset: -> w.pageYOffset
+			parent: -> w.parent
+			pathname: -> w.location.pathname
+			platform: -> w.navigator.platform
+			port: -> w.location.port
+			product: -> w.navigator.product
+			productSub: -> w.navigator.productSub
+			protocol: -> w.location.protocol
+			readyState: -> document.readyState
 			referrer: -> document.referrer
-			search: -> window.location.search
-			scripts: -> window.document.scripts
-			url: -> window.document.URL
-			userAgent: -> window.navigator.userAgent
-			userAgentDowncase: -> window.navigator.userAgent.toLowerCase()
-			vendor: -> window.navigator.vendor
-			vendorSub: -> window.navigator.vendorSub
+			search: -> w.location.search
+			#obj
+			screen: -> w.screen
+			screenLeft: -> w.screenLeft
+			screenTop: -> w.screenTop
+			screenX: -> w.screenX
+			screenY: -> w.screenY
+			scripts: -> w.document.scripts
+			scrollX: -> window.scrollX
+			scrollY: -> window.scrollY
+			self: -> window.self
+			status: -> window.status
+			strictErrorChecking: -> window.strictErrorChecking
+			title: -> window.title
+			top: -> window.top
+			url: -> w.document.URL
+			userAgent: -> w.navigator.userAgent
+			userAgentDowncase: -> w.navigator.userAgent.toLowerCase()
+			vendor: -> w.navigator.vendor
+			vendorSub: -> w.navigator.vendorSub
 			width: -> Math.max document.documentElement['clientWidth'], document.body['scrollWidth'], document.documentElement['scrollWidth'], document.body['offsetWidth'], document.documentElement['offsetWidth']
 		set:
 			cookie: (name, value, daysTilExpire) -> 
@@ -140,7 +203,8 @@
 				(daysTilExpire?) cookie += ';expires=' + exdate.toUTCString()
 				document.cookie = cookie
 				true
+			defaultStatus: (status) -> w.defaultStatus(status)
 			title: (title) ->
 				document.title = title
-			location: (loc) -> window.location = loc
+			location: (loc) -> w.location = loc
 )

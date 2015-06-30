@@ -1,55 +1,91 @@
 (function() {
-  var highbrow, root,
+  var highbrow, root, w,
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   (function(root, factory) {
     return root.highbrow = factory(root.highbrow);
   })(this, function() {
     return highbrow;
-  }, root = this || global, highbrow = {}, highbrow = {
+  }, root = this || global, w = window, highbrow = {}, highbrow = {
     uA: window.navigator.userAgent.toLowerCase(),
     "do": {
       alert: function(msg) {
-        return window.alert(msg);
+        return w.alert(msg);
       },
       assign: function() {
-        return window.location.assign();
+        return w.location.assign();
       },
       atob: function(str) {
-        return window.atob(str);
+        return w.atob(str);
       },
       back: function() {
-        return window.history.back();
+        return w.history.back();
       },
       blur: function() {
-        return window.blur();
+        return w.blur();
       },
       btoa: function(str) {
-        return window.btoa(str);
+        return w.btoa(str);
+      },
+      clearInterval: function() {
+        return w.clearInterval();
+      },
+      clearTimeout: function() {
+        return w.clearTimeout();
       },
       close: function() {
-        return window.close();
+        return w.close();
       },
       confirm: function(msg) {
-        return window.confirm(msg);
+        return w.confirm(msg);
+      },
+      createPopup: function() {
+        return w.createPopup();
+      },
+      focus: function() {
+        return w.focus();
       },
       forward: function() {
-        return window.history.forward();
+        return w.history.forward();
       },
       go: function(loc) {
-        return window.history.go(loc);
+        return w.history.go(loc);
+      },
+      moveBy: function(i) {
+        return w.moveBy(i);
+      },
+      moveTo: function(i) {
+        return w.moveTo(i);
+      },
+      open: function() {
+        return w.open();
+      },
+      print: function() {
+        return w.print();
       },
       prompt: function(msg, def) {
-        return window.prompt(msg, def);
+        return w.prompt(msg, def);
+      },
+      resizeBy: function(i) {
+        return w.resizeBy(i);
+      },
+      resizeTo: function() {
+        return w.resizeTo(i);
       },
       reload: function() {
-        return window.location.reload();
+        return w.location.reload();
       },
       replace: function() {
-        return window.location.replace();
+        return w.location.replace();
+      },
+      scrollTo: function(x, y) {
+        return w.scrollTo(x, y);
+      },
+      setInterval: function(fnc, m) {
+        return w.setInterval(fnc, m);
       },
       stop: function() {
-        return window.stop();
+        return w.stop();
       }
     },
     is: {
@@ -72,11 +108,8 @@
             return false;
           }
         } else {
-          return window.chrome != null;
+          return w.chrome != null;
         }
-      },
-      closed: function() {
-        return window.closed;
       },
       firefox: function(v) {
         var major, vEnd, vStart;
@@ -97,10 +130,10 @@
         return highbrow.get.userAgentDowncase().indexOf('presto') === !-1;
       },
       ie: function(v) {
-        return !(typeof v === "function" ? v(/msie/i.test(highbrow.uA) || indexOf.call(window, 'ActiveXObject') >= 0) : void 0);
+        return !(typeof v === "function" ? v(/msie/i.test(highbrow.uA) || indexOf.call(w, 'ActiveXObject') >= 0) : void 0);
       },
       online: function() {
-        return window.navigator.onLine;
+        return w.navigator.onLine;
       },
       ipad: function() {
         return /ipad/i.test(highbrow.uA);
@@ -169,94 +202,232 @@
       }
     },
     get: {
+      activeElement: function() {
+        return w.document.activeElement;
+      },
+      anchors: function() {
+        return w.document.anchors;
+      },
+      applets: function() {
+        return w.document.applets;
+      },
       appName: function() {
-        return window.navigator.appName;
+        return w.navigator.appName;
       },
       appVersion: function() {
-        return window.navigator.appVersion;
+        return w.navigator.appVersion;
+      },
+      baseURI: function() {
+        return w.document.baseURI;
+      },
+      body: function() {
+        return w.document.body;
+      },
+      closed: function() {
+        return w.closed;
+      },
+      cookie: function() {
+        return w.document.cookie;
+      },
+      defaultState: function() {
+        return w.defaultStatus;
+      },
+      doctype: function() {
+        return w.document.doctype;
+      },
+      document: function() {
+        return w.document;
+      },
+      documentElement: function() {
+        return w.documentElement;
+      },
+      documentMode: function() {
+        return w.documentMode;
+      },
+      documentURI: function() {
+        return w.documentURI;
+      },
+      domain: function() {
+        return w.document.domain;
+      },
+      embeds: function() {
+        return w.document.embeds;
+      },
+      forms: function() {
+        return w.document.forms;
+      },
+      frameElement: function() {
+        return w.frameElement;
+      },
+      frames: function() {
+        return w.frames;
       },
       hash: function() {
-        return window.location.hash;
+        return w.location.hash;
+      },
+      head: function() {
+        return w.document.head;
       },
       height: function() {
         return Math.max(document.documentElement['clientHeight'], document.body['scrollHeight'], document.documentElement['scrollHeight'], document.body['offsetHeight'], document.documentElement['offsetHeight']);
       },
+      history: function() {
+        return w.history;
+      },
       host: function() {
-        return window.location.host;
+        return w.location.host;
       },
       hostname: function() {
-        return window.location.hostname;
+        return w.location.hostname;
       },
       href: function() {
-        return window.location.href;
+        return w.location.href;
+      },
+      images: function() {
+        return w.document.images;
+      },
+      implementation: function() {
+        return w.document.implementation;
       },
       innerHeight: function() {
-        return window.innerHeight;
+        return w.innerHeight;
       },
       innerWidth: function() {
-        return window.innerWidth;
+        return w.innerWidth;
+      },
+      inputEncoding: function() {
+        return w.document.inputEncoding;
       },
       language: function() {
-        return window.navigator.language;
+        return w.navigator.language;
+      },
+      lastModified: function() {
+        return w.navigator.lastModified;
+      },
+      length: function() {
+        return w.length;
+      },
+      linkes: function() {
+        return w.links;
+      },
+      location: function() {
+        return w.location;
       },
       geolocation: function() {
-        return window.navigator.geolocation;
+        return w.navigator.geolocation;
       },
       maxTouchPoints: function() {
         return function() {
-          return window.navigator.maxTouchPoints;
+          return w.navigator.maxTouchPoints;
         };
       },
       name: function() {
-        return window.name;
+        return w.name;
+      },
+      navigator: function() {
+        return w.navigator;
       },
       opener: function() {
-        return window.opener;
+        return w.opener;
       },
       origin: function() {
-        return window.location.origin;
+        return w.location.origin;
+      },
+      outerHeight: function() {
+        return w.outerHeight;
+      },
+      outerWidth: function() {
+        return w.outerWidth;
+      },
+      pageXOffset: function() {
+        return w.pageXOffset;
+      },
+      pageYOffset: function() {
+        return w.pageYOffset;
+      },
+      parent: function() {
+        return w.parent;
       },
       pathname: function() {
-        return window.location.pathname;
+        return w.location.pathname;
       },
       platform: function() {
-        return window.navigator.platform;
+        return w.navigator.platform;
       },
       port: function() {
-        return window.location.port;
+        return w.location.port;
       },
       product: function() {
-        return window.navigator.product;
+        return w.navigator.product;
       },
       productSub: function() {
-        return window.navigator.productSub;
+        return w.navigator.productSub;
       },
       protocol: function() {
-        return window.location.protocol;
+        return w.location.protocol;
+      },
+      readyState: function() {
+        return document.readyState;
       },
       referrer: function() {
         return document.referrer;
       },
       search: function() {
-        return window.location.search;
+        return w.location.search;
+      },
+      screen: function() {
+        return w.screen;
+      },
+      screenLeft: function() {
+        return w.screenLeft;
+      },
+      screenTop: function() {
+        return w.screenTop;
+      },
+      screenX: function() {
+        return w.screenX;
+      },
+      screenY: function() {
+        return w.screenY;
       },
       scripts: function() {
-        return window.document.scripts;
+        return w.document.scripts;
+      },
+      scrollX: function() {
+        return window.scrollX;
+      },
+      scrollY: function() {
+        return window.scrollY;
+      },
+      self: function() {
+        return window.self;
+      },
+      status: function() {
+        return window.status;
+      },
+      strictErrorChecking: function() {
+        return window.strictErrorChecking;
+      },
+      title: function() {
+        return window.title;
+      },
+      top: function() {
+        return window.top;
       },
       url: function() {
-        return window.document.URL;
+        return w.document.URL;
       },
       userAgent: function() {
-        return window.navigator.userAgent;
+        return w.navigator.userAgent;
       },
       userAgentDowncase: function() {
-        return window.navigator.userAgent.toLowerCase();
+        return w.navigator.userAgent.toLowerCase();
       },
       vendor: function() {
-        return window.navigator.vendor;
+        return w.navigator.vendor;
       },
       vendorSub: function() {
-        return window.navigator.vendorSub;
+        return w.navigator.vendorSub;
       },
       width: function() {
         return Math.max(document.documentElement['clientWidth'], document.body['scrollWidth'], document.documentElement['scrollWidth'], document.body['offsetWidth'], document.documentElement['offsetWidth']);
@@ -271,11 +442,14 @@
         document.cookie = cookie;
         return true;
       },
+      defaultStatus: function(status) {
+        return w.defaultStatus(status);
+      },
       title: function(title) {
         return document.title = title;
       },
       location: function(loc) {
-        return window.location = loc;
+        return w.location = loc;
       }
     }
   });
