@@ -2,6 +2,7 @@
 #
 # @author Fleming Slone
 # @since 6/29/2015
+# todo: add document object methods
 
 ((root, factory) ->
 	root.highbrow = factory(root.highbrow)
@@ -116,13 +117,18 @@
 		get:
 			activeElement: -> w.document.activeElement
 			anchors: -> w.document.anchors
+			appCodeName: -> w.navigator.appCodeName
 			applets: -> w.document.applets
 			appName: -> w.navigator.appName
 			appVersion: -> w.navigator.appVersion
+			availHeight: -> w.screen.availHeight
+			availWidth: -> w.screen.availWidth
 			baseURI: -> w.document.baseURI
 			body: -> w.document.body
 			closed: -> w.closed
+			colorDepth: -> w.screen.colorDepth
 			cookie: -> w.document.cookie
+			cookieEnabled: -> w.document.cookieEnabled
 			defaultState: -> w.defaultStatus
 			doctype: -> w.document.doctype
 			#obj
@@ -135,12 +141,14 @@
 			forms: -> w.document.forms
 			frameElement: -> w.frameElement
 			frames: -> w.frames
+			geolocation: -> w.navigator.geolocation
 			hash: -> w.location.hash
 			head: -> w.document.head
 			#this height is taken from jQuery.height
 			height: -> Math.max document.documentElement['clientHeight'], document.body['scrollHeight'], document.documentElement['scrollHeight'], document.body['offsetHeight'], document.documentElement['offsetHeight']
 			#obj
 			history: -> w.history
+			historyLength: -> history.length
 			host: -> w.location.host
 			hostname: -> w.location.hostname
 			href: -> w.location.href
@@ -160,6 +168,7 @@
 			name: -> w.name
 			#obj
 			navigator: -> w.navigator
+			onLine: -> w.navigator.onLine
 			opener: -> w.opener
 			origin: -> w.location.origin
 			outerHeight: -> w.outerHeight
@@ -168,6 +177,7 @@
 			pageYOffset: -> w.pageYOffset
 			parent: -> w.parent
 			pathname: -> w.location.pathname
+			pixelDepth: -> w.screen.pixelDepth
 			platform: -> w.navigator.platform
 			port: -> w.location.port
 			product: -> w.navigator.product
@@ -183,18 +193,19 @@
 			screenX: -> w.screenX
 			screenY: -> w.screenY
 			scripts: -> w.document.scripts
-			scrollX: -> window.scrollX
-			scrollY: -> window.scrollY
-			self: -> window.self
-			status: -> window.status
-			strictErrorChecking: -> window.strictErrorChecking
-			title: -> window.title
-			top: -> window.top
+			scrollX: -> w.scrollX
+			scrollY: -> w.scrollY
+			self: -> w.self
+			status: -> w.status
+			strictErrorChecking: -> w.strictErrorChecking
+			title: -> w.title
+			top: -> w.top
 			url: -> w.document.URL
 			userAgent: -> w.navigator.userAgent
 			userAgentDowncase: -> w.navigator.userAgent.toLowerCase()
 			vendor: -> w.navigator.vendor
 			vendorSub: -> w.navigator.vendorSub
+			#this is taken from jQuery.width
 			width: -> Math.max document.documentElement['clientWidth'], document.body['scrollWidth'], document.documentElement['scrollWidth'], document.body['offsetWidth'], document.documentElement['offsetWidth']
 		set:
 			cookie: (name, value, daysTilExpire) -> 
@@ -207,4 +218,12 @@
 			title: (title) ->
 				document.title = title
 			location: (loc) -> w.location = loc
+			hash: (i) -> w.location.hash(i)
+			host: (i) -> w.location.host(i)
+			hostname: (i) -> w.location.hostname(i)
+			href: (i) -> w.location.href(i)
+			pathname: (i) -> w.location.pathname(i)
+			port: (i) -> w.location.port(i)
+			protocol: (i) -> w.location.protocol(i)
+			search: (i) -> w.location.search(i)
 )
