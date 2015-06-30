@@ -208,6 +208,9 @@
       anchors: function() {
         return w.document.anchors;
       },
+      appCodeName: function() {
+        return w.navigator.appCodeName;
+      },
       applets: function() {
         return w.document.applets;
       },
@@ -216,6 +219,12 @@
       },
       appVersion: function() {
         return w.navigator.appVersion;
+      },
+      availHeight: function() {
+        return w.screen.availHeight;
+      },
+      availWidth: function() {
+        return w.screen.availWidth;
       },
       baseURI: function() {
         return w.document.baseURI;
@@ -226,8 +235,14 @@
       closed: function() {
         return w.closed;
       },
+      colorDepth: function() {
+        return w.screen.colorDepth;
+      },
       cookie: function() {
         return w.document.cookie;
+      },
+      cookieEnabled: function() {
+        return w.document.cookieEnabled;
       },
       defaultState: function() {
         return w.defaultStatus;
@@ -262,6 +277,9 @@
       frames: function() {
         return w.frames;
       },
+      geolocation: function() {
+        return w.navigator.geolocation;
+      },
       hash: function() {
         return w.location.hash;
       },
@@ -273,6 +291,9 @@
       },
       history: function() {
         return w.history;
+      },
+      historyLength: function() {
+        return history.length;
       },
       host: function() {
         return w.location.host;
@@ -327,6 +348,9 @@
       navigator: function() {
         return w.navigator;
       },
+      onLine: function() {
+        return w.navigator.onLine;
+      },
       opener: function() {
         return w.opener;
       },
@@ -350,6 +374,9 @@
       },
       pathname: function() {
         return w.location.pathname;
+      },
+      pixelDepth: function() {
+        return w.screen.pixelDepth;
       },
       platform: function() {
         return w.navigator.platform;
@@ -394,25 +421,25 @@
         return w.document.scripts;
       },
       scrollX: function() {
-        return window.scrollX;
+        return w.scrollX;
       },
       scrollY: function() {
-        return window.scrollY;
+        return w.scrollY;
       },
       self: function() {
-        return window.self;
+        return w.self;
       },
       status: function() {
-        return window.status;
+        return w.status;
       },
       strictErrorChecking: function() {
-        return window.strictErrorChecking;
+        return w.strictErrorChecking;
       },
       title: function() {
-        return window.title;
+        return w.title;
       },
       top: function() {
-        return window.top;
+        return w.top;
       },
       url: function() {
         return w.document.URL;
@@ -450,6 +477,30 @@
       },
       location: function(loc) {
         return w.location = loc;
+      },
+      hash: function(i) {
+        return w.location.hash(i);
+      },
+      host: function(i) {
+        return w.location.host(i);
+      },
+      hostname: function(i) {
+        return w.location.hostname(i);
+      },
+      href: function(i) {
+        return w.location.href(i);
+      },
+      pathname: function(i) {
+        return w.location.pathname(i);
+      },
+      port: function(i) {
+        return w.location.port(i);
+      },
+      protocol: function(i) {
+        return w.location.protocol(i);
+      },
+      search: function(i) {
+        return w.location.search(i);
       }
     }
   });
